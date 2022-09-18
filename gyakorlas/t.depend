@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1663513205 source:c:\users\lenovo\documents\c_projects\t\main.c
+	<stdio.h>
+	<stdlib.h>
+	"szilva.h"
+
+1663501204 c:\users\lenovo\documents\c_projects\t\szilva.h
+
