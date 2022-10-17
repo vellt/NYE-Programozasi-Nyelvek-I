@@ -1,0 +1,3 @@
+C:/Users/Lenovo/CLionProjects/nye-prog1/gyakorlas2/cmake-build-debug/CMakeFiles/gyakorlas2.dir
+C:/Users/Lenovo/CLionProjects/nye-prog1/gyakorlas2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Lenovo/CLionProjects/nye-prog1/gyakorlas2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
