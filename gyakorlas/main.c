@@ -4,7 +4,8 @@
 #include <math.h>
 #include "szilva.h"
 
-
+void karaterkezelosFuggvenyek();
+void karaterkezelosFuggvenyek2();
 int main()
 {
     //tombok();
