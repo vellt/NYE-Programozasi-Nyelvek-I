@@ -5,6 +5,11 @@
 #include <string.h>
 #include <ctype.h>
 
+typedef enum bool{
+    false,
+    true
+} bool;
+
 void resz42();
 
 void gyak1();
@@ -25,6 +30,20 @@ void resz46();
 
 void resz47();
 
+void resz48();
+
+void resz49();
+
+void resz50();
+
+void resz51();
+
+int osszeg(int a, int b);
+
+void resz52();
+
+bool prime(int x);
+
 int main() {
     //gyak1();
     //resz42();
@@ -33,25 +52,109 @@ int main() {
     //resz44();
     //resz45();
     //resz46();
-    resz47();
+    //resz47();
     //gyak3();
     //gyak4();
+    //resz48();
+    //resz49();
+    //resz50();
+    //resz51();
+    resz52();
+    //
     return 0;
 }
 
 
-struct dolgozo{
+/** primek */
+void resz52() {
+    int x;
+    printf("Adj meg egy szamot!\n");
+    scanf("%d", &x);
+    if(prime(x)){
+        printf("A szam prim!\n");
+    } else{
+        printf("A szam nem prim!\n");
+    }
+}
+
+bool prime(int x) {
+    int i=2;
+    while (i<=sqrt(x) && x%i!=0) {i++;}
+    if(i>sqrt(x)) return true;
+    else return false;
+}
+
+void resz51() {
+    int a,b;
+    printf("Adj meg ket szamot! (a b)\n");
+    scanf("%d %d",&a,&b);
+    printf("Az osszeg: %d",osszeg(a,b));
+}
+
+int osszeg(int a, int b) {
+    return a+b;
+}
+
+
+
+/** Bool*/
+void resz50() {
+    bool ertek;
+    printf("Akarok e meg enni?\n");
+    scanf("%d", &ertek);
+    if(ertek){
+        printf("igen\n");
+    } else{
+        printf("nem\n");
+    }
+}
+
+typedef enum szinek{
+    kek=2,
+    barna,
+    piros,
+    zold
+} szinek;
+
+/** Enum */
+void resz49() {
+    szinek szin=kek;
+    szinek masikSzin=2;
+    printf("%d",szin);
+}
+
+typedef struct dolgozo{
     int ID;
     float suly;
     char nev[51];
     char szemszin[21];
-};
+} dolgozo;
+
+void resz48() {
+    int tomb[20];
+    dolgozo dolgozok[3];
+
+    for (int i = 0; i < 3; ++i) {
+        scanf("%d %f %s %s",&dolgozok[i].ID, &dolgozok[i].suly, dolgozok[i].nev, dolgozok[i].szemszin);
+    }
+
+    printf(">>>>>>>>>>>>>>>>>>>>>>>\n");
+
+    for (int i = 0; i < 3; ++i) {
+        printf("%d %0.2f %s %s\n",dolgozok[i].ID, dolgozok[i].suly, dolgozok[i].nev, dolgozok[i].szemszin);
+    }
+
+
+}
+
+
+
 
 /** Strut */
 void resz47() {
     //struct dolgozo-->típus
     //dolgozo1-->valtozonev
-    struct dolgozo dolgozo1;
+    dolgozo dolgozo1;
     /*
     dolgozo1.ID=1;
     dolgozo1.suly=8.1;
