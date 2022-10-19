@@ -44,6 +44,10 @@ void resz52();
 
 bool prime(int x);
 
+void resz53a();
+
+void resz53b();
+
 int main() {
     //gyak1();
     //resz42();
@@ -59,9 +63,38 @@ int main() {
     //resz49();
     //resz50();
     //resz51();
-    resz52();
+    //resz52();
+    resz53a();
+    resz53b();
     //
     return 0;
+}
+
+void resz53b() {
+
+}
+
+/** memória címzés */
+void resz53a() {
+    int x=5;
+    int* pX=&x; //int* olyan változó ami egy integer memória cimét képes eltárolni
+
+    printf("A valtozo neve: x\n"
+           " valtozo erteke: %d\n"
+           "A valtozo memoriacime: %p\n",x,&x);
+
+    printf("A valtozo neve: x\n"
+           " valtozo erteke: %d\n"
+           "A valtozo memoriacime: %p\n",x,pX);
+
+    printf("Adj meg 2 szamot (a b):");
+    int a,b;
+    int* pA=&a; //vagy: int *pA, *pB egy sorban!
+    int* pB=&b;
+
+    scanf("%d %d",pA,pB);
+    printf("erteke: %d %d\n",*pA,b);
+    printf("memoria cime: %p %p\n",pA,&b);
 }
 
 
