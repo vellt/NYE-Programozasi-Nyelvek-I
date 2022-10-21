@@ -44,9 +44,9 @@ void resz52();
 
 bool prime(int x);
 
-void resz53a();
+void resz53();
 
-void resz53b();
+void resz54();
 
 int main() {
     //gyak1();
@@ -64,18 +64,33 @@ int main() {
     //resz50();
     //resz51();
     //resz52();
-    resz53a();
-    resz53b();
+    //resz53();
+    resz54();
     //
     return 0;
 }
 
-void resz53b() {
+//** memoria cimzes statikus tomboknel */
+void resz54() {
+    int tomb[10];
+    int i;
+    for (int i = 0; i < 10; ++i) {
+        scanf("%d",&tomb[i]);
+    }
+
+    //maga a tomb már mutat az első elemre, tombbel a memoria cimet kapjuk mge, *tombbel az eretket
+    //tomb[i] az *(tomb+i) vel felel meg, a csillaggaé feloldjuk azt, és elérjuk az elemez
+    printf("\n%d\t %p\n", *tomb, tomb);
+
+    printf("\nElem:\t Ertek:\t Cim:\n");
+    for (int i = 0; i < 10; ++i) {
+        printf("tomb[%d]\t %d\t %p\n",i, tomb[i], &tomb[i]);
+    }
 
 }
 
 /** memória címzés */
-void resz53a() {
+void resz53() {
     int x=5;
     int* pX=&x; //int* olyan változó ami egy integer memória cimét képes eltárolni
 
