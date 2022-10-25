@@ -48,6 +48,12 @@ void resz53();
 
 void resz54();
 
+void resz55();
+
+void scantomb(int pInt[10], const int size);
+
+void printtomb(int pInt[10], const int size);
+
 int main() {
     //gyak1();
     //resz42();
@@ -65,22 +71,46 @@ int main() {
     //resz51();
     //resz52();
     //resz53();
-    resz54();
+    //resz54();
+    resz55();
     //
     return 0;
+}
+
+/** Fuggvenyek es pointerek kapocsolata */
+void resz55() {
+    const int size=10;
+    int tomb[size];
+    scantomb(tomb, size);
+    printtomb(tomb, size);
+}
+
+void printtomb(int tomb[10], const int size) {
+    for (int i = 0; i < size; ++i) {
+        printf("tomb[%d] = %d\n",i, tomb[i]);
+    }
+}
+
+void scantomb(int tomb[10], const int size) {
+    //tomb magában egy cimre mutató pointer, ezért ezeket mindig cimszerint adjuk at
+    //vannak esetek amikor nem mindig cimszerint torienik az informacio atadas
+    for (int i = 0; i < size; ++i) {
+        printf("tomb[%d]= ",i);
+        scanf("%d", &tomb[i]);
+    }
 }
 
 //** memoria cimzes statikus tomboknel */
 void resz54() {
     int tomb[10];
-    int i;
     for (int i = 0; i < 10; ++i) {
         scanf("%d",&tomb[i]);
     }
 
-    //maga a tomb már mutat az első elemre, tombbel a memoria cimet kapjuk mge, *tombbel az eretket
+    //maga a tomb már mutat az első elemre, tombbel a memoria cimet kapjuk meg, *tombbel az eretket
     //tomb[i] az *(tomb+i) vel felel meg, a csillaggaé feloldjuk azt, és elérjuk az elemez
     printf("\n%d\t %p\n", *tomb, tomb);
+    printf("\n%d\t %p\n", *tomb, tomb+1); //+1-el rámutatunk a következő memória cimre
 
     printf("\nElem:\t Ertek:\t Cim:\n");
     for (int i = 0; i < 10; ++i) {
