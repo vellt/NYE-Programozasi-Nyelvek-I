@@ -54,6 +54,10 @@ void scantomb(int pInt[10], const int size);
 
 void printtomb(int pInt[10], const int size);
 
+void resz56();
+
+void csere(int *a, int *b); //*a a-ra mutató pointer
+
 int main() {
     //gyak1();
     //resz42();
@@ -72,9 +76,25 @@ int main() {
     //resz52();
     //resz53();
     //resz54();
-    resz55();
+    //resz55();
+    resz56();
     //
     return 0;
+}
+
+/** Címszerinti paraméterátadás */
+void resz56() {
+    int a=5, b=2;
+    printf("a=%d b=%d\n",a,b);
+    csere(&a,&b); //cimszerint adunk át értéket, referenciát alakítunk ki
+    printf("a=%d b=%d\n",a,b);
+}
+
+void csere(int *a, int *b) {
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+    printf("a=%d b=%d\n",*a,*b);
 }
 
 /** Fuggvenyek es pointerek kapocsolata */
@@ -99,6 +119,16 @@ void scantomb(int tomb[10], const int size) {
         scanf("%d", &tomb[i]);
     }
 }
+
+/*
+ * statikus tombok, stringek esetében mindig cim szerint adodnak at az ertekek, REF
+void scantomb(int tomb[10], const int size) {
+for (int i = 0; i < size; ++i) {
+        printf("tomb[%d]= ",i);
+        scanf("%d", &tomb[i]);
+    }
+}
+*/
 
 //** memoria cimzes statikus tomboknel */
 void resz54() {
