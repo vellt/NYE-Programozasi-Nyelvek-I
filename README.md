@@ -1,2 +1,1 @@
-# nye-prog1
- c programming language
+BAI0181L - Vegera József
