@@ -62,6 +62,10 @@ void resz57();
 
 void resz58();
 
+void scantomb2(int tomb[], const int size);
+
+void printtomb2(int tomb[], const int size);
+
 int main() {
     //gyak1();
     //resz42();
@@ -84,13 +88,29 @@ int main() {
     //resz56();
     //resz57();
     resz58();
-    
+
     return 0;
 }
 
-/** Dinamikus Tömb */
+/** Dinamikus Tömb később növelhetjük a méretét nem kell előre tudnunk fixen*/
 void resz58() {
+    const int size=10;
+    int* tomb = (int*) malloc(sizeof (int)*size);
+    scantomb2( tomb, size);
+    printtomb2( tomb, size);
+    free(tomb); //ha ezt elfelejtjuk dynakuikuzs tombok esetében, memória szivagrgast eredfmenyez
+}
 
+void printtomb2(int tomb[], const int size) {
+    for (int i = 0; i < size; ++i) {
+        printf("%d: %d\n",i, tomb[i]);
+    }
+}
+
+void scantomb2(int tomb[], const int size) {
+    for (int i = 0; i < size; ++i) {
+        scanf("%d",&tomb[i]);
+    }
 }
 
 /** ravezetetes a dynamikus tombokre: Memóriakezelés - lefoglalás */
