@@ -58,6 +58,10 @@ void resz56();
 
 void csere(int *a, int *b); //*a a-ra mutató pointer
 
+void resz57();
+
+void resz58();
+
 int main() {
     //gyak1();
     //resz42();
@@ -77,9 +81,31 @@ int main() {
     //resz53();
     //resz54();
     //resz55();
-    resz56();
-    //
+    //resz56();
+    //resz57();
+    resz58();
+    
     return 0;
+}
+
+/** Dinamikus Tömb */
+void resz58() {
+
+}
+
+/** ravezetetes a dynamikus tombokre: Memóriakezelés - lefoglalás */
+void resz57() {
+    //memoriat h lefoglaljunk, szükség van az stdlib.h-ra --malloc duggveny?
+    //valtozonak helyet foglalok le-->az dynamikus váéltozo lesz
+
+    //statikus vs dynamikus tobok közötti kulonbség-->statikus tomboknel tudom mennyi lesz a merte, as dynamikusnal nem
+
+    //malloc(sizeof(int)) = 1 int-nyi helyet foglalok a memoriaban, ezt konvertálni kell int*-ra mert alapbol a malloc az void* visszatérésű
+    int* x=(int*) malloc(sizeof(int));
+    scanf("%d", x); //Az x mögé nem kell &-jel mert pointer és annak az alapértéke a memóriacím
+    printf("szam: %d",*x);
+    //fgv végén mindig fel kell oldani a lefoglalt tárterületet
+    free(x); //ha nem hasznaljuk már a valtozot a memoriabanak vissza kell adni a tárterületet
 }
 
 /** Címszerinti paraméterátadás */
@@ -88,6 +114,7 @@ void resz56() {
     printf("a=%d b=%d\n",a,b);
     csere(&a,&b); //cimszerint adunk át értéket, referenciát alakítunk ki
     printf("a=%d b=%d\n",a,b);
+
 }
 
 void csere(int *a, int *b) {
