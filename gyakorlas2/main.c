@@ -70,9 +70,15 @@ void resz59();
 
 void resz60();
 
-void resz61();
-
 void resz62();
+
+void resz63();
+
+void resz64();
+
+void resz65();
+
+void resz66();
 
 int main() {
     //gyak1();
@@ -98,13 +104,60 @@ int main() {
     //resz58();
     //resz59();
     //resz60();
-    //resz61();
-    resz62();
+    //resz62();
+    //resz63();
+    //resz64();
+    resz65();
+    resz66();
     return 0;
 }
 
+/** RANDOM FILE ACCESS Filekezelés - Véletlenszerű Filehozzáférés */
+void resz66() {
+    
+}
+
+/** Filekezelés - Filehoz tartalom fűzése */
+void resz65() {
+    FILE * fPointer;
+    fPointer= fopen("alma.txt","a");
+    //mode:r olvasás
+    //mode:r+ a létező fájlt tudjuk írni és olvasni
+    //mode:w írás overwrite
+    //mode:w+ a nemlétező fájlt tudjuk írni és olvasni
+    //mode:a írás appear
+    //mode:a+ a létező fájlhoz tudunk hozzáfűzni és olvasni
+    fprintf(fPointer,"\n-bla bla");
+    fclose(fPointer);
+}
+
+/** Filekezelés - Fileból olvasás */
+void resz64() {
+    FILE * fPointer;
+    fPointer= fopen("alma.txt","r");
+    char line[101]; //100 karakter hosszu
+    while (!feof(fPointer)){  //feof: file end of file
+        fgets(line,100, fPointer ); //mibe, milyen hosszut, miből
+        puts(line);
+    }
+    /*
+            \n beolvasáskor került oda az a záró karakter, a gets az autómatikusan oda illeszti a végére
+            //puts: dob egy \n-t
+
+            szeretem az almat, mert finom! (\n\n)
+
+            szeretem a retest, mert finom! (\n\n)
+
+            szeretem a barackot, mert finom! (\n\n)
+
+            szeretma a sort! (\n\n)
+         * */
+    fclose(fPointer);
+}
+
+
 /** Filekezelés - Fileba írás */
-void resz62() {
+void resz63() {
     //fájl mutató
     FILE * fPointer;
     //fpointeren keresztül megnyitottuk az alma.txt (létre hoztuk, hogy írhassunk bele)
@@ -124,7 +177,7 @@ typedef struct gyumolcs{
 } gyumolcs;
 
 /** structurára mutató mutatók működése */
-void resz61() {
+void resz62() {
     gyumolcs * alma, a;
     alma=&a;
     gets((*alma).szin);
@@ -239,6 +292,7 @@ void printtomb(int tomb[10], const int size) {
     }
 }
 
+/** statikus tombok, stringek esetében mindig cim szerint adodnak at az ertekek, */
 void scantomb(int tomb[10], const int size) {
     //tomb magában egy cimre mutató pointer, ezért ezeket mindig cimszerint adjuk at
     //vannak esetek amikor nem mindig cimszerint torienik az informacio atadas
@@ -248,17 +302,7 @@ void scantomb(int tomb[10], const int size) {
     }
 }
 
-/*
- * statikus tombok, stringek esetében mindig cim szerint adodnak at az ertekek, REF
-void scantomb(int tomb[10], const int size) {
-for (int i = 0; i < size; ++i) {
-        printf("tomb[%d]= ",i);
-        scanf("%d", &tomb[i]);
-    }
-}
-*/
-
-//** memoria cimzes statikus tomboknel */
+/** memoria cimzes statikus tomboknel */
 void resz54() {
     int tomb[10];
     for (int i = 0; i < 10; ++i) {
@@ -331,8 +375,6 @@ int osszeg(int a, int b) {
     return a+b;
 }
 
-
-
 /** Bool*/
 void resz50() {
     bool ertek;
@@ -379,12 +421,7 @@ void resz48() {
     for (int i = 0; i < 3; ++i) {
         printf("%d %0.2f %s %s\n",dolgozok[i].ID, dolgozok[i].suly, dolgozok[i].nev, dolgozok[i].szemszin);
     }
-
-
 }
-
-
-
 
 /** Strut */
 void resz47() {
@@ -550,5 +587,3 @@ void gyak1() {
     scanf("%d",&a);
     printf("%.0lf", pow(a,2));
 }
-
-
