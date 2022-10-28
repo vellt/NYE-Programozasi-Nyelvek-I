@@ -70,6 +70,10 @@ void resz59();
 
 void resz60();
 
+void resz61();
+
+void resz62();
+
 int main() {
     //gyak1();
     //resz42();
@@ -93,8 +97,43 @@ int main() {
     //resz57();
     //resz58();
     //resz59();
-    resz60();
+    //resz60();
+    //resz61();
+    resz62();
     return 0;
+}
+
+/** Filekezelés - Fileba írás */
+void resz62() {
+    //fájl mutató
+    FILE * fPointer;
+    //fpointeren keresztül megnyitottuk az alma.txt (létre hoztuk, hogy írhassunk bele)
+    fPointer= fopen("alma.txt","w"); //mode: "w" write
+    // fprintf seítségével bele írunk egy sort
+    // ha letezik a fájl akk felülírja annak a tartalmát, amennyiben a mode:w
+    // ((ha létezik a fájl akk boviti annak tartalmat, amennyiben a mode:a))
+    fprintf(fPointer,"szeretem a retest mert finom!\n");//mibe,mit
+    //bezárjuk
+    fclose(fPointer);
+}
+
+typedef struct gyumolcs{
+    int magok_szama;
+    int levelek_szama;
+    char szin[11];
+} gyumolcs;
+
+/** structurára mutató mutatók működése */
+void resz61() {
+    gyumolcs * alma, a;
+    alma=&a;
+    gets((*alma).szin);
+    //*alma feloldja az  alma=&a;-ban az &-jelet, igy hozzá férünk az "a"-hoz
+    //&(*alma) zárójelezés kell a prioritás miatt, az & jel hamarbb hajtódik végre, mint a *
+    scanf("%d %d", &(*alma).magok_szama, &alma->levelek_szama);
+    // egyszerűsítés: -> feloldja az &-jelet, egyből hozzáférünk az "a"-hoz
+    // (*alma).magok_szama     alma->magok_szama  //ez a népszerűbb jelölés
+    printf("Magok szama: %d\t levelek szama: %d\t szin: %s\n", (*alma).magok_szama, (*alma).levelek_szama, (*alma).szin);
 }
 
 /** 2D Dinamikus Tömb */
@@ -118,6 +157,11 @@ void resz60() {
         printf("\n");
     }
 
+    //fel kell szabaditani a memoria teruletet
+    for (int i = 0; i < 2; ++i) {
+        free(tomb[i]);
+    }
+    free(tomb);
 }
 
 /** Mutatóra mutató mutató */
