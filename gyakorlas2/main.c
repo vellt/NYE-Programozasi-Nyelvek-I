@@ -66,6 +66,10 @@ void scantomb2(int tomb[], const int size);
 
 void printtomb2(int tomb[], const int size);
 
+void resz59();
+
+void resz60();
+
 int main() {
     //gyak1();
     //resz42();
@@ -87,15 +91,48 @@ int main() {
     //resz55();
     //resz56();
     //resz57();
-    resz58();
-
+    //resz58();
+    //resz59();
+    resz60();
     return 0;
+}
+
+/** 2D Dinamikus Tömb */
+void resz60() {
+    int** tomb=(int**) malloc(sizeof (int*)*2); //ez a töm
+    for (int i = 0; i < 2; ++i) {
+        tomb[i]=(int*) malloc(sizeof (int)*5); //5
+    }
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            printf("tomb[%d][%d]:", i,j);
+            scanf("%d", &tomb[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n\n");
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 5; ++j) {
+            printf("tomb[%d][%d]=%d\n", i,j,  tomb[i][j]);
+        }
+        printf("\n");
+    }
+
+}
+
+/** Mutatóra mutató mutató */
+void resz59() {
+    //többdimensizs tömböknél jön jól
+    int x=5;
+    int* pX=&x;
+    int** pPX=&pX;
+    printf("Ertek: %d\n", **pPX);
 }
 
 /** Dinamikus Tömb később növelhetjük a méretét nem kell előre tudnunk fixen*/
 void resz58() {
     const int size=10;
-    int* tomb = (int*) malloc(sizeof (int)*size);
+    int* tomb = (int*) malloc(sizeof(int)*size);
     scantomb2( tomb, size);
     printtomb2( tomb, size);
     free(tomb); //ha ezt elfelejtjuk dynakuikuzs tombok esetében, memória szivagrgast eredfmenyez
