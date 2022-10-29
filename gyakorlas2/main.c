@@ -80,6 +80,10 @@ void resz65();
 
 void resz66();
 
+void resz67();
+
+
+
 int main() {
     //gyak1();
     //resz42();
@@ -107,14 +111,78 @@ int main() {
     //resz62();
     //resz63();
     //resz64();
-    resz65();
-    resz66();
+    //resz65();
+    //resz66();
+    resz67();
     return 0;
+}
+
+ struct item{
+    int data;
+    struct item* next;
+};
+
+typedef struct item item;
+
+item *add(item *prevent, int num);
+
+void del_last_item(item *first);
+
+/** Láncolt lista */
+void resz67() {
+    // altalaban 2 dolgot foglalunk le, valtozo: firts=elso elem, egesz listat jellemezhetjuk vele,
+    // act=mutathat bármelyik elemre
+
+    item * act=(item*) malloc(sizeof(item)), *first;
+    int szam;
+    scanf("%d", &szam);
+    act->data=szam;
+    act->next=NULL; //ezzel jelezzuk h itt  alista vege
+    first=act;
+    while (szam!=0){
+        scanf("%d",&szam);
+        act=add(act, szam);
+    }
+
+    del_last_item(first);
+
+    printf("\n");
+    for (item * i = first; i !=NULL; i=i->next) {
+        printf("%d\n", i->data);
+    }
+
+    item * temp;//memoria felszabaditashoz
+    for (item * i = first; i !=NULL;) {
+        temp=i;
+        i=i->next;
+        free(temp);
+    }
+}
+
+void del_last_item(item *first) {
+    item * i=first;
+    for(;(i->next)->next!=NULL;i=i->next);
+    item * temp=i->next;
+    i->next=NULL;
+    free(temp);
+
+}
+
+item *add(item *prevent, int num) {
+    item * new_item=(item*) malloc(sizeof (item));
+    new_item->data=num;
+    new_item->next=NULL;
+    prevent->next=new_item;
+    return new_item;
 }
 
 /** RANDOM FILE ACCESS Filekezelés - Véletlenszerű Filehozzáférés */
 void resz66() {
-    
+    FILE * fPointer;
+    fPointer = fopen("alma.txt","w+"); //felul ir indent ami esetlegesen a file-ba volt
+    fputs("Ma ettem 3 almat ebedre.", fPointer);
+    fseek(fPointer, -7, SEEK_END);
+    fputs( "az egyetemi menzan.",fPointer);
 }
 
 /** Filekezelés - Filehoz tartalom fűzése */
